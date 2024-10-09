@@ -1,3 +1,5 @@
 I wrote this text using vim because I am cool
 
 Well, I simply removed lines in both files and added this one
+
+Some changes...
