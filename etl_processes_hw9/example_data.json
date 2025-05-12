@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Иван",
+      "email": "ivan@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Мария Смирнова",
+      "logins": ["2025-05-08T15:06:57Z"]
+    },
+    {
+      "id": 3,
+      "age": 41,
+      "email": "n.petrov@example.com",
+      "status": "inactive"
+    },
+    {
+      "id": 4,
+      "name": "Михаил",
+      "logins": ["2025-05-09T10:23:34Z", "2025-05-11T21:45:14Z"]
+    }
+  ],
+  "transactions": [
+    {
+      "transaction_id": "tx1001",
+      "user_id": 1,
+      "amount": 259.99,
+      "currency": "RUB",
+      "timestamp": "2025-05-10T12:45:48Z"
+    },
+    {
+      "transaction_id": "tx1002",
+      "user_id": 2,
+      "amount": 874.32,
+      "items": ["book", "pen"]
+    },
+    {
+      "transaction_id": "tx1003",
+      "currency": "USD",
+      "amount": 14.32,
+      "status": "pending"
+    },
+    {
+      "transaction_id": "tx1004",
+      "user_id": 3,
+      "timestamp": "2025-05-10T14:38:19Z",
+      "items": ["book", "pen"]
+    }
+  ]
+}
