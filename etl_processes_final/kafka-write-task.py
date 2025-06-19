@@ -1,4 +1,4 @@
-from pyspark.sql import SparkSession, Row
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import to_json, col, struct
 
 
@@ -12,8 +12,7 @@ def send_batch_to_kafka(iterator):
             .option('kafka.sasl.jaas.config',
                     "org.apache.kafka.common.security.scram.ScramLoginModule required "
                     "username=\"user1\" "
-                    "password=\"password1\" "
-                    ";") \
+                    "password=\"password1\";") \
             .save()
     yield "Partition Processed"
 
@@ -23,7 +22,7 @@ def main():
         .appName("parquet-to-kafka-spark") \
         .getOrCreate()
 
-    df = spark.read.parquet("s3a://etl-data-transform/transactions_v2_clean.parquet").cache()
+    df = spark.read.parquet("s3a://data-proc-main-bucket/processed-data/reddit_opinion_climate_change.parquet").cache()
 
     df = df.select(to_json(struct([col(c).alias(c) for c in df.columns])).alias('value'))
     df.rdd.mapPartitions(send_batch_to_kafka).collect()

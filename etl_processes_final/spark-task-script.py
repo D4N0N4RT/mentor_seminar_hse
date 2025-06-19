@@ -16,6 +16,7 @@ try:
         .withColumn("subreddit", col("subreddit").cast(StringType())) \
         .withColumn("created_time", to_timestamp(col("created_time").cast("string"), "yyyy-MM-dd HH:mm:ss")) \
         .withColumn("post_id", col("post_id").cast(StringType())) \
+        .withColumn("author_name", col("author_name").cast(StringType())) \
         .withColumn("controversiality", col("controversiality").cast(FloatType())) \
         .withColumn("ups", col("ups").cast(IntegerType())) \
         .withColumn("downs", col("downs").cast(IntegerType())) \

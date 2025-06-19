@@ -1,0 +1,27 @@
+CREATE TABLE processed_kafka_comments (
+    `comment_id` String,
+    `score` Int32,
+    `self_text` String,
+    `subreddit` String,
+    `created_time` DateTime,
+    `post_id` String,
+    `author_name` String,
+    `controversiality` Float32,
+    `ups` Int32,
+    `downs` Int32,
+    `user_is_verified` Boolean,
+    `user_account_created_time` DateTime,
+    `user_awardee_karma` Float32,
+    `user_awarder_karma` Float32,
+    `user_link_karma` Float32,
+    `user_comment_karma` Float32,
+    `user_total_karma` Float32,
+    `post_score` Int32,
+    `post_self_text` String,
+    `post_title` String,
+    `post_upvote_ratio` Float32,
+    `post_thumbs_ups` Int32,
+    `post_total_awards_received` Int32,
+    `post_created_time` DateTime
+) ENGINE = MergeTree
+ORDER BY `created_time`;

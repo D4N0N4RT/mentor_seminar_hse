@@ -7,15 +7,12 @@ from airflow.providers.yandex.operators.dataproc import (
     DataprocDeleteClusterOperator,
 )
 
-# Данные вашей инфраструктуры
 YC_DP_AZ = 'ru-central1-a'
 YC_DP_SSH_PUBLIC_KEY = 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF32WuDT0XtoS23R8tuj3Dc2T0ko+wlYLH50zwUl1JcC Yandex Cloud Data Proc Key'
 YC_DP_SUBNET_ID = 'e9bii53l9tcfd082p8m0'
 YC_DP_SA_ID = 'aje2cd52q35tf41qohb9'
-YC_DP_METASTORE_URI = '10.128.0.15'
 YC_BUCKET = 'data-proc-main-bucket'
 
-# Настройки DAG
 with DAG(
         dag_id='dataproc_dag',
         schedule_interval='@daily',
@@ -44,9 +41,6 @@ with DAG(
         computenode_max_hosts_count=3,
         services=['YARN', 'SPARK'],
         datanode_count=0,
-        properties={
-            'spark:spark.hive.metastore.uris': f'thrift://{YC_DP_METASTORE_URI}:9083',
-        },
     )
 
     create_pyspark_job = DataprocCreatePysparkJobOperator(
